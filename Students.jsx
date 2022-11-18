@@ -7,8 +7,8 @@ const Students = (props) => {
         <Container>
             <Row>
                 {
-                    props.usersInfo.map((user,index) =>{
-                        return <Student userData={user} key={index} /> 
+                    props.usersInfo.map((user) =>{
+                        return <Student userData={user} key={user.id} deleteUser={props.deleteUser} editStudent = {props.editStudent}/> 
                     })
                 }
             

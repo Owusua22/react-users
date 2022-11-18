@@ -1,8 +1,25 @@
-import React from 'react';
-import { Card,Col, Button } from "react-bootstrap";
+import React, {useState}from 'react';
+import { Card,Col, Button , Modal } from "react-bootstrap";
+import EditStudent from './EditStudent';
 
 const Student = (props) => {
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+const handleDelete =(e) => {
+    e.preventDefault();
+    props.deleteUser(props.userData.id)
+}
+
     return (
+        <>
+        <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>< EditStudent  userData={props.userData} editStudent ={props.editStudent} closeModal ={handleClose} /> </Modal.Body>
+       
+      </Modal>
         <Col md="4" style={{marginTop: "3rem"}}>
              <Card style={{ width: '14rem' }}>
       <Card.Body>
@@ -21,11 +38,12 @@ const Student = (props) => {
           
         </Card.Text>
        
-        <Button variant="success" size="sm">Edit</Button>
-        <Button variant="danger" size="sm" style={{marginLeft: "20px"}}> Delete </Button>
+        <Button variant="success" size="sm" onClick={handleShow}>Edit</Button>
+        <Button variant="danger" size="sm" style={{marginLeft: "20px"}} onClick={handleDelete}> Delete </Button>
       </Card.Body>
     </Card>
         </Col>
+        </>
     );
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, Button} from "react-bootstrap";
+import {Form, Button} from "react-bootstrap"
 
 class AddStudents extends Component {
     constructor(props){
@@ -8,6 +8,8 @@ class AddStudents extends Component {
             name:"",
             email:"",
             gen:"",
+            id:"",
+
         }
     }
     handleChange = (e) =>{
